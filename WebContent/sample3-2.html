@@ -8,20 +8,32 @@
 		<title>sample3</title>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		<script type="text/javascript">
-$(function(){
-	$.ajax({
-		url: 'sample3.xml',
-		dataType: 'xml',
-		success : function(data){
-			$("item",data).each(function(){
-				$("dl").append("<dt><a href='"+$("link",this).text()+"'>"+$("title",this).text()+"</a></dt><dd>"+$("description",this).text()+"</dd>");
+		$(function(){
+			$( "button" ).click( function(){
+				
+				$.ajax({
+					url: '/wp_js2/sample3.xml',
+					dataType: 'xml',
+					success : function( response ){
+						$("item", response).each( function(){
+							//console.log( this );
+							
+							var html = 
+								"<dt>" + $( "title", this ).text()  + "</dt>" +
+								"<dd>" + $( "description", this ).text()  + "</dd>";
+							
+							$( "dl" ).append( html );	
+						});
+					}
+				});
 			});
-		}
-	});
-});
+		});
 		</script>
 	</head>
 	<body>
-		<dl></dl>
+		<button>데이터 가져오기</button>
+		<dl>
+		
+		</dl>
 	</body>
 </html>

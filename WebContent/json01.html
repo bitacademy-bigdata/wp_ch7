@@ -5,23 +5,28 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
 <script>
+var user = {
+	name: "안대혁",
+	email: "kickscar@gmail.com"
+};
+
 $(function(){
 	$("button").click(function(){
 	
 		$.ajax( {
-			async: true,
-			url : "/json/servlet",
+			async: true, //비동기
+			url : "/wp_js2/sample.json",
 			type: "get",
-			dataType: "json",
+			dataType: "json", // 받는 데이터 타입
 			data: "",
-			contentType: 'application/json',
-			success: function(data){
-				alert( data.name );
-				alert( data.message );
-				alert( data.etc );
+			//contentType: 'application/json', //서버에 보내는 데이터 타입
+			success: function(response){
+				$.each( response, function(index, vo) {
+					console.log( vo.name + ":" + vo.age );
+				});
 			},
 			error: function( jqXHR, status, e ){
-				alert( status + " : " + e );
+				console.error( status + " : " + e );
 			}
 		});
 		

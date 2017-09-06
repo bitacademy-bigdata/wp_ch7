@@ -11,6 +11,7 @@
 			$(function(){
 				$("button").click(function(){
 					$("p").load("./sample1.txt");
+					console.log( "non-blocking 통신 : 여기가 먼저 실행될 수 있다." );
 				});
 			});
 		</script>

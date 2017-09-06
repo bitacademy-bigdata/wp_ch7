@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<title>sample4</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript">
+		var a = ["apple", "banana", "melon", "grape"];
+		
+		// 배열의 순회1
+		for( var i = 0; i < a.length; i++){
+			console.log( a[i] );
+		}
+		
+		// 배열의 순회2
+		$.each(a, function(index, item){
+			console.log(index + ":" + item);
+		});
+		
+		$(function(){
+			$( "button" ).click( function(){
+				
+				//$object(jqeury 객체)를 순회
+				$("table tr").each( function(){
+					// console.log( this );
+					var html = 
+						"<li>" +
+						$( "th", this ).text() + ":" +
+						$( "td", this ).text() +
+						"</li>";
+						
+					$( "ul" ).append( html );	
+				})
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<button>파싱</button>
+		<table>
+			<tr>
+				<th>text(...)</th>
+				<td>텍스트를 변경한다.</td>
+			</tr>
+			<tr>
+				<th>html(...)</th>
+				<td>HTML을 변경한다.</td>
+			</tr>
+			<tr>
+				<th>prepend(...)</th>
+				<td>태그 안의 앞부분에 HTML을 삽입한다.</td>
+			</tr>
+			<tr>
+				<th>append(...)</th>
+				<td> 태그 안의 뒷부분에 HTML을 삽입한다.</td>
+			</tr>
+			<tr>
+				<th>before(...)</th>
+				<td>태그의 앞에 HTML을 삽입한다.</td>
+			</tr>
+			<tr>
+				<th>after(...)</th>
+				<td>태그의 뒤에 HTML을 삽입한다.</td>
+			</tr>
+		</table>
+		<ul>
+		</ul>
+	</body>
+</html>
